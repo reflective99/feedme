@@ -7,3 +7,4 @@ static==0.4
 wsgiref==0.1.2
 django_toolbelt==0.0.1
 static3==0.6.1
+ordereddict==1.1
