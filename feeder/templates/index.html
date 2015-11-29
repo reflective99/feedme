@@ -74,8 +74,8 @@
 							<hr>
 							<p>Where do you want to eat?</p>
 							<div class="container">
-							<form method="POST">
-								<select>
+							<form method="POST" action="results">
+								<select name="city">
 									<option>I don't care</option>
 								{% for c in cities %}
 									<option id="{{ c }}">
@@ -83,15 +83,15 @@
 									</option>
 								{% endfor %}
 								</select>
-							</form>
+						
 						</div>
 							<br>
 
 
 
 							<p>What kind of food do you want?</p>
-
-							<select class="selectpicker">
+							
+							<select name = "categories">
 								<option>Doesn't matter</option>
 							{% for c in categories %}
 								<option>
@@ -101,7 +101,9 @@
 							</select>
 							<br>
 							<br>
-								<a href="/results" class="btn btn-primary btn-xl page-scroll">Feed Me!</a>
+								<button class="btn btn-primary btn-xl page-scroll" type="submit" name="submit">Feed Me!</a>
+								{% csrf_token %}
+								</form>
 					</div>
 			</div>
 	</header>

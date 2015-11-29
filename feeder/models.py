@@ -10,5 +10,5 @@ class Restaurant(models.Model):
     categories = models.CharField(max_length=100)
     
     def __unicode__(self):
-        return self.name + " " + self.address
+        return self.name  
 

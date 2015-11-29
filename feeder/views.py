@@ -22,7 +22,8 @@ def index(request):
     return render(request, 'index.html', context)
 
 def result(request):
-    other = Restaurant.objects.filter(city="Durham")
+    c = request.POST.get('city')
+    other = Restaurant.objects.filter(city=c)
     count = len(other)
     restaurant = other[random.randint(0, count)]
     c = restaurant.categories[1:].split('*')
