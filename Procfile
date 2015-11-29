@@ -1,1 +1,1 @@
-web: gunicorn feedme.wsgi --log-file -
+web: gunicorn feedme:wsgi --log-file -
