@@ -82,9 +82,8 @@ WSGI_APPLICATION = 'feedme.wsgi.application'
    # }
 #}
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'database',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
     }
 }
 
