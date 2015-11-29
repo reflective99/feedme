@@ -24,6 +24,8 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="static/css/creative.css" type="text/css">
+    <link rel="stylesheet" href="static/css/bootstrap-select.css" type="text/css">
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -68,14 +70,15 @@
 	</nav>
 
 	<header>
+			<script type="text/javascript">$('.selectpicker').selectpicker();</script>
 			<div class="header-content">
 					<div class="header-content-inner">
 							<h2>Be adventurous with your dining experiences</h2>
 							<hr>
 							<p>Where do you want to eat?</p>
-							<div class="container">
+							
 							<form method="POST" action="results">
-								<select name="city">
+								<select name="city" class="selectpicker" data-style="btn btn-primary page-scroll" data-live-search="true">
 									<option>I don't care</option>
 								{% for c in cities %}
 									<option id="{{ c }}">
@@ -84,14 +87,14 @@
 								{% endfor %}
 								</select>
 						
-						</div>
+							<br>
 							<br>
 
 
 
 							<p>What kind of food do you want?</p>
 							
-							<select name = "categories">
+							<select name="categories" data-size="5" class="selectpicker" data-style="btn btn-primary page-scroll" data-live-search="true">
 								<option>Doesn't matter</option>
 							{% for c in categories %}
 								<option>
@@ -145,36 +148,6 @@
 			</div>
 	</section>
 
-<script type="text/javascript">
-      window.onload=function(){
-      $('.selectpicker').selectpicker();
-      $('.rm-mustard').click(function() {
-        $('.remove-example').find('[value=Mustard]').remove();
-        $('.remove-example').selectpicker('refresh');
-      });
-      $('.rm-ketchup').click(function() {
-        $('.remove-example').find('[value=Ketchup]').remove();
-        $('.remove-example').selectpicker('refresh');
-      });
-      $('.rm-relish').click(function() {
-        $('.remove-example').find('[value=Relish]').remove();
-        $('.remove-example').selectpicker('refresh');
-      });
-      $('.ex-disable').click(function() {
-          $('.disable-example').prop('disabled',true);
-          $('.disable-example').selectpicker('refresh');
-      });
-      $('.ex-enable').click(function() {
-          $('.disable-example').prop('disabled',false);
-          $('.disable-example').selectpicker('refresh');
-      });
-
-      // scrollYou
-      $('.scrollMe .dropdown-menu').scrollyou();
-
-      prettyPrint();
-      };
-    </script>
 
 
 <!-- jQuery -->
@@ -182,6 +155,7 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/bootstrap-select.js"></script>
 
 <!-- Plugin JavaScript -->
 <script src="static/js/jquery.easing.min.js"></script>
