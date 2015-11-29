@@ -106,7 +106,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-BASE_DIR = '/feeder/'
+BASE_DIR = 'app/feeder/'
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
