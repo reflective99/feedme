@@ -23,9 +23,14 @@ def index(request):
 
 def result(request):
     c = request.POST.get('city')
+    cat = request.POST.get('categories')
     other = Restaurant.objects.filter(city=c)
-    count = len(other)
-    restaurant = other[random.randint(0, count)]
+    res = []
+    for r in other:
+         if cat in r.categories:                                                                                        
+           res.append(r)
+    count = len(res)
+    restaurant = res[random.randint(0, count)]
     c = restaurant.categories[1:].split('*')
     context = {'restaurant': restaurant, 'count': count, 'cats': c}
     return render(request, 'result.html', context)
