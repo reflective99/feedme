@@ -1,24 +1,35 @@
-<h1>
-  {{ restaurant.name }}
-</h1>
+{% extends "base.html" %}
 
-<small>Selected from {{ count }} {{restaurant.city }}-area restaurants.</small>
+{% block content %}
+<div class="container">
+	<div class="text-center">
+		<h2>
+		  {{ restaurant.name }}
+		</h2>
 
-<p>Cuisine:</p>
+		<small>Selected from {{ count }} {{restaurant.city }}-area restaurants.</small>
 
-<ul>
-{% for c in cats %}
-	<li>
-		{{ c }}
-	</li>
-{% endfor %}
-</ul>
+		<p>Cuisine:
+		{% for c in cats %}
+  			{{ c }}{% if not forloop.last %}, {% endif %}
+		{% endfor %}
 
-<p>Average rating: {{ restaurant.rating }}</p>
+		
+		</p>
 
-<p>{{ restaurant.address }}, {{ restaurant.city }} {{ restaurant.zip_code }}</p>
+		<p>Average rating: {{ restaurant.rating }}</p>
 
+		<p>{{ restaurant.address }}, {{ restaurant.city }} {{ restaurant.zip_code }}</p>
+
+		<br>
+		<iframe class = "center" width="600" height="450" frameborder="0" style="border:0"
+		src="https://www.google.com/maps/embed/v1/place?q={{ addr }}&key=AIzaSyALN-hUMbwHEiKz3JtcaXmS1w5o5Yob_Io" allowfullscreen></iframe>
 <br>
+		<a style="margin-top: 15px;" href="/results">I don't like this, give me something else!</a>
+		<br>
+						
+	</div>
+</div>
+{% endblock %}
 
-<a style="margin-top: 15px;" href="/results">I don't like this, give me something else!</a>
 

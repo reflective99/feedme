@@ -30,10 +30,16 @@ def result(request):
          if cat in r.categories:                                                                                        
            res.append(r)
     count = len(res)
-    restaurant = res[random.randint(0, count)]
-    c = restaurant.categories[1:].split('*')
-    context = {'restaurant': restaurant, 'count': count, 'cats': c}
-    return render(request, 'result.html', context)
+    if(count > 0):
+        
+        restaurant = res[random.randint(0, count-1)]
+        add = restaurant.address + " " + restaurant.city 
+        add.replace(" ", "+")
+        c1= restaurant.categories[1:].split('*')
+        context = {'restaurant': restaurant, 'count': count, 'cats': c1, 'addr': add}
+        return render(request, 'result.html', context)
+    else:
+        return render(request, 'failed.html')
     
 def profile(request):
     #user = User.objects.all()[2]

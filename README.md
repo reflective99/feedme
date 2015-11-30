@@ -16,3 +16,5 @@ Inside the shell:
 from feeder.models import Restaurant
 excefile('feeder/import_data.py')
 After this, the Restaurant table should be populated.# feedme
+
+AIzaSyALN-hUMbwHEiKz3JtcaXmS1w5o5Yob_Io
