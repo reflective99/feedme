@@ -7,3 +7,4 @@ class RestaurantAdmin(admin.ModelAdmin):
     list_display = ('name', 'city', 'rating')
 
 admin.site.register(Restaurant, RestaurantAdmin)
+

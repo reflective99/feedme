@@ -54,10 +54,22 @@
         <li class="active"><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/contact">Contact</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="/restricted">Restricted Page</a></li>
+        <li><a href="/logout">Logout</a></li>
+        {% else %}
+        <li><a href="/register">Register Here</a></li>
+        <li><a href="/login">Login</a></li>
+        {% endif %}
       </ul>
     </div><!--/.nav-collapse -->
   </div>
 </div>
+<!-- {% if user.is_authenticated %}
+<h1>Welcome {{ user.username }}!</h1>
+{% else %}
+<h1>Not Logged In</h1>
+{% endif %} -->
 
 		
 	
