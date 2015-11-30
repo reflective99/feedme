@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'feedme.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 # THIS IS FOR LOCAL USE. 
-
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -96,7 +96,6 @@ DATABASES = {
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
-"""
 
 # # Allow all host hosts/domain names for this site
 ALLOWED_HOSTS = ['*']
