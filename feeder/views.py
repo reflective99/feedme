@@ -46,3 +46,6 @@ def profile(request):
     #context = {'user': user}
     context = {}
     return render(request, 'profile.html', context)
+    
+def about(request):
+    return render(request, 'about.html')
