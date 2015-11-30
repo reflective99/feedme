@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'profile', views.profile, name='profile'),
     url(r'about', views.about, name='about'),
     url(r'contact', views.contact, name='contact'),
+    url(r'accounts/', include('allauth.urls')),
 ]

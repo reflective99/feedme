@@ -35,7 +35,48 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'feeder',
+    # The Django sites framework is required
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # ... include the providers you want to enable:
+    'allauth.socialaccount.providers.amazon',
+    'allauth.socialaccount.providers.angellist',
+    'allauth.socialaccount.providers.bitbucket',
+    'allauth.socialaccount.providers.bitly',
+    'allauth.socialaccount.providers.coinbase',
+    'allauth.socialaccount.providers.dropbox',
+    'allauth.socialaccount.providers.dropbox_oauth2',
+    'allauth.socialaccount.providers.edmodo',
+    'allauth.socialaccount.providers.evernote',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.flickr',
+    'allauth.socialaccount.providers.feedly',
+    'allauth.socialaccount.providers.fxa',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.hubic',
+    'allauth.socialaccount.providers.instagram',
+    'allauth.socialaccount.providers.linkedin',
+    'allauth.socialaccount.providers.linkedin_oauth2',
+    'allauth.socialaccount.providers.odnoklassniki',
+    'allauth.socialaccount.providers.openid',
+    'allauth.socialaccount.providers.persona',
+    'allauth.socialaccount.providers.soundcloud',
+    'allauth.socialaccount.providers.spotify',
+    'allauth.socialaccount.providers.stackexchange',
+    'allauth.socialaccount.providers.tumblr',
+    'allauth.socialaccount.providers.twitch',
+    'allauth.socialaccount.providers.twitter',
+    'allauth.socialaccount.providers.vimeo',
+    'allauth.socialaccount.providers.vk',
+    'allauth.socialaccount.providers.weibo',
+    'allauth.socialaccount.providers.xing',
 )
+
+SITE_ID = 1
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -72,7 +113,7 @@ WSGI_APPLICATION = 'feedme.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 # THIS IS FOR LOCAL USE. 
-"""
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -89,7 +130,7 @@ DATABASES = {
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
-
+"""
 
 # # Allow all host hosts/domain names for this site
 ALLOWED_HOSTS = ['*']
@@ -134,3 +175,13 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
+
+
+## Adding authentication backends
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
