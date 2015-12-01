@@ -3,13 +3,14 @@
 
 {% block content %}
 <div class="container">
-			<div class="text-center">
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
 					
-                {% if registered %}
-        <strong>thank you for registering!</strong>
+        {% if registered %}
+        <strong>Thank you for registering!</strong>
         <a href="/">Return to the homepage.</a><br />
         {% else %}
-        <strong>Register here!</strong><br />
+        <h4>Register here!</h4><br />
 
         <form id="user_form" method="post" action="register"
                 enctype="multipart/form-data">
@@ -21,11 +22,12 @@
                  making everything look neater. -->
             {{ user_form.as_p }}
           
-
+            <br>
             <!-- Provide a button to click to submit the form. -->
-            <input type="submit" name="submit" value="Register" />
+            <input type="submit" name="submit" value="Register" class="btn btn-inverse"/>
         </form>
         {% endif %}
-            </div>
+    </div>
+</div>
 </div>
 {% endblock %}
