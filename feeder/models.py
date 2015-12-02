@@ -19,4 +19,8 @@ class Likes(models.Model):
     
     def __unicode__(self):
         return self.name
+        
+class Like(models.Model):
+    uid = models.IntegerField()
+    rid = models.IntegerField()
     

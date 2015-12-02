@@ -5,6 +5,7 @@ from django.shortcuts import render_to_response
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from .models import Restaurant
+from .models import Like
 from django.contrib.auth.models import User
 
 import random
@@ -49,7 +50,13 @@ def result(request):
 def profile(request):
     #user = User.objects.all()[2]
     #context = {'user': user}
-    context = {}
+    user = request.user
+    likes = Like.objects.filter(uid=user.id)
+    rnames = []
+    for l in likes:
+      r = Restaurant.objects.get(id = l.rid)
+      rnames.append(r)
+    context = {'likes': likes, 'u': user, 'res_names': rnames}
     return render(request, 'profile.html', context)
     
 def about(request):
