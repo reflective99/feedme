@@ -58,6 +58,11 @@ def profile(request):
       rnames.append(r)
     context = {'likes': likes, 'u': user, 'res_names': rnames}
     return render(request, 'profile.html', context)
+
+def add_like(request, uid, rid):
+    l = Like(uid=uid, rid=rid)
+    l.save()
+    return HttpResponseRedirect('/profile')
     
 def about(request):
     return render(request, 'about.html')

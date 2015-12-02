@@ -4,7 +4,7 @@
 <div class="container">
 	<div class="text-center">
 		<h2>
-		  {{ restaurant.name }}
+		  {{ restaurant.name }} 
 		</h2>
 
 		<small>Selected from {{ count }} {{restaurant.city }}-area restaurants.</small>
@@ -23,7 +23,12 @@
 
 		<br>
    
-    <button class="btn btn-primary btn-xl page-scroll" type="submit" name="submit">I like this restaurant!</a></button>
+
+      <a href="/add_like/{{user.id}}/{{restaurant.id}}">
+        I like this restaurant!
+      </a>
+
+
 
     <br><br>
    

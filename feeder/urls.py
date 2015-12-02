@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'results', views.result, name='result'),
     url(r'about', views.about, name='about'),
     url(r'profile', views.profile, name='profile'),
+    url(r'add_like/(?P<uid>\d+)/(?P<rid>\d+)/', views.add_like, name='add_like'),
     url(r'contact', views.contact, name='contact'),
     url(r'register', views.register, name='register'),
     url(r'login', views.user_login, name='login'),
