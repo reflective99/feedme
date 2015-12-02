@@ -5,6 +5,7 @@ from django.shortcuts import render_to_response
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from .models import Restaurant
+from django.contrib.auth.models import User
 
 import random
 
@@ -21,7 +22,8 @@ def index(request):
         for cat in cat_list:
             categories.append(cat)
     categories = sorted(set(categories))
-    context = {'cities': cities, 'categories': categories }
+    allusers = User.objects.all()
+    context = {'cities': cities, 'categories': categories, 'users': allusers }
     return render(request, 'index.html', context)
 
 def result(request):

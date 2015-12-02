@@ -12,4 +12,11 @@ class Restaurant(models.Model):
     
     def __unicode__(self):
         return self.name
+        
+class Likes(models.Model):
+    uid = models.ManyToManyField(User)
+    rid = models.ManyToManyField(Restaurant)
+    
+    def __unicode__(self):
+        return self.name
     

@@ -55,7 +55,7 @@
         <li><a href="/about">About</a></li>
         <li><a href="/contact">Contact</a></li>
         {% if user.is_authenticated %}
-        <li><a href="/restricted">Restricted Page</a></li>
+        <li><a href="/profile">{{user.username}}</a></li>
         <li><a href="/logout">Logout</a></li>
         {% else %}
         <li><a href="/register">Register Here</a></li>
