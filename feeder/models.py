@@ -24,3 +24,7 @@ class Like(models.Model):
     uid = models.IntegerField()
     rid = models.IntegerField()
     
+class Category(models.Model):
+    rid = models.IntegerField()
+    cat = models.CharField(max_length=20)
+    
