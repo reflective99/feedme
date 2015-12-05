@@ -22,6 +22,8 @@ import urllib2
 
 import oauth2
 
+from .models import Restaurant
+
 
 API_HOST = 'api.yelp.com'
 DEFAULT_TERM = 'dinner'
@@ -86,24 +88,11 @@ def query_api(term, location):
     response = search(term, location)
     
     businesses = response.get('businesses')
-    restaurant_list = []
+    category_list = []
     for business in businesses:
-      #categories = ""
-      #for cat in business['categories']:
-        #categories += ("*"+cat[0])
-      address = ' '.join(business['location']['address'])
-      city = business['location']['city']
-      zip_code = business['location']['postal_code']
-      rest_data = {}
-      rest_data['name'] = business['name']
-      rest_data['address'] = address
-      rest_data['city'] = city
-      rest_data['zip'] = zip_code
-      rest_data['coords'] = business['location']['coordinate']
-      rest_data['rating'] = business['rating']
-      #rest_data['categories'] = categories
-      restaurant_list.append(rest_data)
-    print json.dumps(restaurant_list)
+      print business['name']
+      print Restaurant.objects.all()
+    print json.dumps(category_list)
 
     
     

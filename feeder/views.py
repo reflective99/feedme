@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from .models import Restaurant
 from .models import Like
+from .models import Category
 from django.contrib.auth.models import User
 
 import random
@@ -22,7 +23,8 @@ def index(request):
         cat_list = c['categories'][1:].split('*')
         for cat in cat_list:
             categories.append(cat)
-    categories = sorted(set(categories))
+    #categories = sorted(set(categories))
+    categories = Category.objects.order_by('cat').values('cat').distinct()
     allusers = User.objects.all()
     context = {'cities': cities, 'categories': categories, 'users': allusers }
     return render(request, 'index.html', context)

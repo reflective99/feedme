@@ -6,6 +6,7 @@
 					
 							<h2>Be adventurous with your dining experiences</h2>
 							<hr>
+
 							<h4>Where do you want to eat?</h4>
 							<br>
 							<form method="POST" action="results">
@@ -29,7 +30,7 @@
 								<option>Doesn't matter</option>
 							{% for c in categories %}
 								<option>
-									{{ c }}
+									{{ c.cat }}
 								</option>
 							{% endfor %}
 							</select>
