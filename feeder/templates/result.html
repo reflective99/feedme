@@ -11,10 +11,8 @@
 
 		<p>Cuisine:
 		{% for c in cats %}
-  			{{ c }}{% if not forloop.last %}, {% endif %}
+  			{{ c.cat }}{% if not forloop.last %}, {% endif %}
 		{% endfor %}
-
-		
 		</p>
 
 		<p>Average rating: {{ restaurant.rating }}</p>
@@ -23,10 +21,11 @@
 
 		<br>
    
-
-      <a href="/add_like/{{user.id}}/{{restaurant.id}}">
-        I like this restaurant!
-      </a>
+      {% if res_liked == False %}
+        <a href="/add_like/{{user.id}}/{{restaurant.id}}">
+          I like this restaurant!
+        </a>
+      {% endif %}
 
 
 

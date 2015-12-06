@@ -65,7 +65,12 @@ def result(request):
         add = restaurant.address + " " + restaurant.city 
         add.replace(" ", "+")
         restaurant_categories = Category.objects.filter(rid=restaurant.id)
-        context = {'restaurant': restaurant, 'count': count, 'cats': restaurant_categories, 'addr': add}
+        
+        #check if the restaurant has been liked by this user
+        user = request.user
+        res_liked = Like.objects.filter(uid=user.id, rid=restaurant.id).exists()
+        
+        context = {'restaurant': restaurant, 'count': count, 'cats': restaurant_categories, 'addr': add, 'res_liked': res_liked}
         return render(request, 'result.html', context)
     else:
         return render(request, 'failed.html')
@@ -74,12 +79,12 @@ def profile(request):
     #user = User.objects.all()[2]
     #context = {'user': user}
     user = request.user
-    likes = Like.objects.filter(uid=user.id)
+    likes = Like.objects.filter(uid=user.id).distinct()
     rnames = []
     for l in likes:
       r = Restaurant.objects.get(id = l.rid)
       rnames.append(r)
-    context = {'likes': likes, 'u': user, 'res_names': rnames}
+    context = {'u': user, 'res_names': rnames}
     return render(request, 'profile.html', context)
 
 def add_like(request, uid, rid):
