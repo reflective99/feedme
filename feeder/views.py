@@ -31,20 +31,41 @@ def index(request):
 
 def result(request):
     c = request.POST.get('city')
-    cat = request.POST.get('categories')
-    other = Restaurant.objects.filter(city=c)
-    res = []
-    for r in other:
-         if cat in r.categories:                                                                                        
-           res.append(r)
+    category_param = request.POST.get('categories')
+    print c
+    print category_param
+    
+    #get restaurants in specified location
+    if c != "I don't care":
+      restaurants_with_location = Restaurant.objects.filter(city=c)
+    else:
+      restaurants_with_location = Restaurant.objects.all()
+      
+    #get all restaurants with the requested category
+    if category_param != "Doesn't matter":
+      #gives list of rids that are restaurants with appropriate category
+      restaurants_with_category = Category.objects.filter(cat=category_param).values('rid')
+
+    
+    #need to find all restaurants that are in restaurants_with_location and in restaurants_with_category
+      res = []
+      for res1 in restaurants_with_location:
+        for res2 in restaurants_with_category:
+          if res1.id == res2['rid']:
+            res.append(res1)
+      print res
+    else:
+      #if no category specified, just use the ones with correct location
+      res = restaurants_with_location
+    
     count = len(res)
     if(count > 0):
-        
+        #randomly select a restaurant
         restaurant = res[random.randint(0, count-1)]
         add = restaurant.address + " " + restaurant.city 
         add.replace(" ", "+")
-        c1= restaurant.categories[1:].split('*')
-        context = {'restaurant': restaurant, 'count': count, 'cats': c1, 'addr': add}
+        restaurant_categories = Category.objects.filter(rid=restaurant.id)
+        context = {'restaurant': restaurant, 'count': count, 'cats': restaurant_categories, 'addr': add}
         return render(request, 'result.html', context)
     else:
         return render(request, 'failed.html')
