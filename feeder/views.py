@@ -17,14 +17,14 @@ def index(request):
     for c in city_hash:
         cities.append(c['city'])
     cities = set(cities)
-    cats = Restaurant.objects.values('categories')
+    cats = Category.objects.values('cat').distinct()
     categories = []
     for c in cats:
-        cat_list = c['categories'][1:].split('*')
-        for cat in cat_list:
-            categories.append(cat)
+        categories.append(c['cat'])
+    categories = sorted(set(cateogires))
+    
     #categories = sorted(set(categories))
-    categories = Category.objects.order_by('cat').values('cat').distinct()
+    # categories = Category.objects.order_by('cat').values('cat').distinct()
     allusers = User.objects.all()
     context = {'cities': cities, 'categories': categories, 'users': allusers }
     return render(request, 'index.html', context)

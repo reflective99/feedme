@@ -23,5 +23,6 @@ class Like(models.Model):
     
 class Category(models.Model):
     rid = models.IntegerField()
-    cat = models.CharField(max_length=100)
+    cat = models.CharField(db_index = True, max_length=100)
     
+  
