@@ -17,14 +17,12 @@ class Likes(models.Model):
     uid = models.ManyToManyField(User)
     rid = models.ManyToManyField(Restaurant)
     
-    def __unicode__(self):
-        return self.name
-        
+   
 class Like(models.Model):
     uid = models.IntegerField()
     rid = models.IntegerField()
     
 class Category(models.Model):
     rid = models.IntegerField()
-    cat = models.CharField(max_length=20)
+    cat = models.CharField(max_length=50)
     
