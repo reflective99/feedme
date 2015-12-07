@@ -8,7 +8,7 @@ print "starting data import"
 with open('feeder/yelp_data_durham.json') as data_file:    
     data = json.load(data_file)
     for rst in data:
-
+      print rst["rating"]
       if Restaurant.objects.filter(name = rst["name"]).exists() == False:  
           print "This doesn't exist"
           r = Restaurant(name=rst["name"], address=rst["address"], city=rst["city"], zip_code=rst["zip"], rating=rst["rating"], categories=rst["categories"])
