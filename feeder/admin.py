@@ -10,7 +10,7 @@ class RestaurantAdmin(admin.ModelAdmin):
     list_display = ('name', 'city', 'rating')
     
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('cat')
+    list_display = ('cat', 'rid')
 
 admin.site.register(Restaurant, RestaurantAdmin)
 admin.site.register(Category, CategoryAdmin)
