@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Restaurant(models.Model):
     name = models.CharField(max_length=100)
-    address = models.CharField(max_length=50)
+    address = models.CharField(max_length=100)
     city = models.CharField(max_length=15)
     zip_code = models.IntegerField()
     rating = models.FloatField()
@@ -24,5 +24,5 @@ class Like(models.Model):
     
 class Category(models.Model):
     rid = models.IntegerField()
-    cat = models.CharField(max_length=50)
+    cat = models.CharField(max_length=100)
     
