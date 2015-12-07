@@ -59,7 +59,7 @@ python manage.py shell
 
 Inside the shell:
 ```
-from feeder.models import Restaurant
+from feeder.models import Restaurant, Category
 excefile('feeder/import_data.py')
 ```
 
