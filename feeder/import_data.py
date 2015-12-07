@@ -63,13 +63,13 @@ for f in files:
       print rst["rating"]
       if Restaurant.objects.filter(name = rst["name"]).exists() == False:  
         print "This restaurant is not in the database. Adding to db..."
-        r = Restaurant(name=rst["name"], address=rst["address"], city=rst["city"], zip_code=rst["zip"], rating=rst["rating"], categories=rst["categories"])
+        r = Restaurant(name=rst["name"], address=rst["address"], city=rst["city"], zip_code=rst["zip"], rating=rst["rating"])
         r.save()
       else:
         print "Restaurant already exists in database"
         r = Restaurant.objects.get(name = rst["name"])
       print r.id
-      for c in r.categories.split('*')[1:]:
+      for c in rst["categories"].split('*')[1:]:
         if Category.objects.filter(rid=r.id, cat=c).exists() == False:
           cgy = Category(rid=r.id, cat=c)
           print cgy.rid

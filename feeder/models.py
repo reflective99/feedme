@@ -8,7 +8,6 @@ class Restaurant(models.Model):
     city = models.CharField(max_length=15)
     zip_code = models.IntegerField()
     rating = models.FloatField()
-    categories = models.CharField(max_length=100)
     
     def __unicode__(self):
         return self.name
