@@ -16,6 +16,10 @@ python yelp.py --location="Durham, NC" --term="barbeque" > ../feeder/yelp_data_d
 python yelp.py --location="Durham, NC" --term="sushi" > ../feeder/yelp_data_durham_sushi.json
 python yelp.py --location="Durham, NC" --term="italian" > ../feeder/yelp_data_durham_italian.json
 python yelp.py --location="Durham, NC" --term="mexican" > ../feeder/yelp_data_durham_mex.json
+python yelp.py --location="Durham, NC" --term="korean" > ../feeder/yelp_data_durham_korean.json
+python yelp.py --location="Durham, NC" --term="sandwiches" > ../feeder/yelp_data_durham_sw.json
+python yelp.py --location="Durham, NC" --term="pizza" > ../feeder/yelp_data_durham_pizza.json
+python yelp.py --location="Durham, NC" --term="cheap" > ../feeder/yelp_data_durham_cheap.json
 python yelp.py --location="Chapel Hill, NC" > ../feeder/yelp_data_ch.json
 python yelp.py --location="Chapel Hill, NC" --term="breakfast" > ../feeder/yelp_data_ch_breakfast.json
 python yelp.py --location="Chapel Hill, NC" --term="lunch" > ../feeder/yelp_data_ch_lunch.json
@@ -24,6 +28,9 @@ python yelp.py --location="Chapel Hill, NC" --term="barbeque" > ../feeder/yelp_d
 python yelp.py --location="Chapel Hill, NC" --term="sushi" > ../feeder/yelp_data_ch_sushi.json
 python yelp.py --location="Chapel Hill, NC" --term="italian" > ../feeder/yelp_data_ch_italian.json
 python yelp.py --location="Chapel Hill, NC" --term="mexican" > ../feeder/yelp_data_ch_mex.json
+python yelp.py --location="Chapel Hill, NC" --term="korean" > ../feeder/yelp_data_ch_korean.json
+python yelp.py --location="Chapel Hill, NC" --term="sandwiches" > ../feeder/yelp_data_ch_sw.json
+python yelp.py --location="Chapel Hill, NC" --term="cheap" > ../feeder/yelp_data_ch_cheap.json
 python yelp.py --location="Washington, DC" > ../feeder/yelp_data_dc.json
 python yelp.py --location="Washington, DC" --term="breakfast" > ../feeder/yelp_data_dc_breakfast.json
 python yelp.py --location="Washington, DC" --term="lunch" > ../feeder/yelp_data_dc_lunch.json
@@ -32,6 +39,9 @@ python yelp.py --location="Washington, DC" --term="barbeque" > ../feeder/yelp_da
 python yelp.py --location="Washington, DC" --term="sushi" > ../feeder/yelp_data_dc_sushi.json
 python yelp.py --location="Washington, DC" --term="italian" > ../feeder/yelp_data_dc_italian.json
 python yelp.py --location="Washington, DC" --term="mexican" > ../feeder/yelp_data_dc_mex.json
+python yelp.py --location="Washington, DC" --term="korean" > ../feeder/yelp_data_dc_korean.json
+python yelp.py --location="Washington, DC" --term="sandwiches" > ../feeder/yelp_data_dc_sw.json
+python yelp.py --location="Washington, DC" --term="cheap" > ../feeder/yelp_data_dc_cheap.json
 python yelp.py --location="New York, NY" > ../feeder/yelp_data_nyc.json
 python yelp.py --location="New York, NY" --term="breakfast" > ../feeder/yelp_data_nyc_breakfast.json
 python yelp.py --location="New York, NY" --term="lunch" > ../feeder/yelp_data_nyc_lunch.json
@@ -40,6 +50,9 @@ python yelp.py --location="New York, NY" --term="barbeque" > ../feeder/yelp_data
 python yelp.py --location="New York, NY" --term="sushi" > ../feeder/yelp_data_nyc_sushi.json
 python yelp.py --location="New York, NY" --term="italian" > ../feeder/yelp_data_nyc_italian.json
 python yelp.py --location="New York, NY" --term="mexican" > ../feeder/yelp_data_nyc_mex.json
+python yelp.py --location="New York, NY" --term="korean" > ../feeder/yelp_data_nyc_korean.json
+python yelp.py --location="New York, NY" --term="sandwiches" > ../feeder/yelp_data_nyc_sw.json
+python yelp.py --location="New York, NY" --term="cheap" > ../feeder/yelp_data_nyc_cheap.json
 cd ..
 python manage.py shell
 ```

@@ -93,13 +93,19 @@ def query_api(term, location):
         categories += ("*"+cat[0])
       address = ' '.join(business['location']['address'])
       city = business['location']['city']
-      zip_code = business['location']['postal_code']
+      try:
+        zip_code = business['location']['postal_code']
+      except KeyError:
+        zip_code = 00000
       rest_data = {}
       rest_data['name'] = business['name']
       rest_data['address'] = address
       rest_data['city'] = city
       rest_data['zip'] = zip_code
-      rest_data['coords'] = business['location']['coordinate']
+      try:
+        rest_data['coords'] = business['location']['coordinate']
+      except KeyError:
+        rest_data['coords'] = 0000
       rest_data['rating'] = business['rating']
       rest_data['categories'] = categories
       restaurant_list.append(rest_data)

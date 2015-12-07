@@ -5,7 +5,51 @@ print "starting data import"
 
 #execfile('feeder/import_data.py')
 
-files = ['feeder/yelp_data_durham.json', 'feeder/yelp_data_durham_breakfast.json', 'feeder/yelp_data_durham_lunch.json', 'feeder/yelp_data_ch.json', 'feeder/yelp_data_ch_breakfast.json', 'feeder/yelp_data_ch_lunch.json', 'feeder/yelp_data_dc.json', 'feeder/yelp_data_dc_breakfast.json', 'feeder/yelp_data_dc_lunch.json', 'feeder/yelp_data_nyc.json', 'feeder/yelp_data_nyc_breakfast.json', 'feeder/yelp_data_nyc_lunch.json']
+files = ['feeder/yelp_data_durham.json', 
+        'feeder/yelp_data_durham_breakfast.json', 
+        'feeder/yelp_data_durham_lunch.json' , 
+        'feeder/yelp_data_durham_bars.json', 
+        'feeder/yelp_data_durham_bbq.json', 
+        'feeder/yelp_data_durham_sushi.json',
+        'feeder/yelp_data_durham_italian.json',
+        'feeder/yelp_data_durham_mex.json', 
+        'feeder/yelp_data_durham_korean.json', 
+        'feeder/yelp_data_durham_sw.json', 
+        'feeder/yelp_data_durham_pizza.json',
+        'feeder/yelp_data_durham_cheap.json',
+        'feeder/yelp_data_ch.json', 
+        'feeder/yelp_data_ch_breakfast.json', 
+        'feeder/yelp_data_ch_lunch.json',
+        'feeder/yelp_data_ch_bars.json', 
+        'feeder/yelp_data_ch_bbq.json', 
+        'feeder/yelp_data_ch_sushi.json',
+        'feeder/yelp_data_ch_italian.json',
+        'feeder/yelp_data_ch_mex.json',
+        'feeder/yelp_data_ch_korean.json', 
+        'feeder/yelp_data_ch_sw.json', 
+        'feeder/yelp_data_ch_cheap.json',
+        'feeder/yelp_data_dc.json', 
+        'feeder/yelp_data_dc_breakfast.json', 
+        'feeder/yelp_data_dc_lunch.json',
+        'feeder/yelp_data_dc_bars.json',  
+        'feeder/yelp_data_dc_sushi.json',
+        'feeder/yelp_data_dc_italian.json',
+        'feeder/yelp_data_dc_mex.json',
+        'feeder/yelp_data_dc_korean.json', 
+        'feeder/yelp_data_dc_sw.json',
+        'feeder/yelp_data_dc_cheap.json', 
+        'feeder/yelp_data_nyc.json', 
+        'feeder/yelp_data_nyc_breakfast.json', 
+        'feeder/yelp_data_nyc_lunch.json',
+        'feeder/yelp_data_nyc_bars.json', 
+        'feeder/yelp_data_nyc_bbq.json', 
+        'feeder/yelp_data_nyc_sushi.json',
+        'feeder/yelp_data_nyc_italian.json',
+        'feeder/yelp_data_nyc_mex.json',
+        'feeder/yelp_data_nyc_korean.json', 
+        'feeder/yelp_data_nyc_sw.json',
+        'feeder/yelp_data_nyc_cheap.json'
+        ]
 
 count = 0
 
@@ -26,8 +70,9 @@ for f in files:
         r = Restaurant.objects.get(name = rst["name"])
       print r.id
       for c in r.categories.split('*')[1:]:
-        cgy = Category(rid=r.id, cat=c)
-        print cgy.rid
-        print cgy.cat
-        cgy.save()
+        if Category.objects.filter(rid=r.id, cat=c).exists() == False:
+          cgy = Category(rid=r.id, cat=c)
+          print cgy.rid
+          print cgy.cat
+          cgy.save()
 print count
