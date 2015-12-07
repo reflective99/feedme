@@ -21,7 +21,7 @@ def index(request):
     categories = []
     for c in cats:
         categories.append(c['cat'])
-    categories = sorted(set(cateogires))
+    categories = sorted(set(categories))
     
     #categories = sorted(set(categories))
     # categories = Category.objects.order_by('cat').values('cat').distinct()
