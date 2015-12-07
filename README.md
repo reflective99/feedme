@@ -9,9 +9,17 @@ Clone the repo and cd into the first directory.
 ```
 cd feedme/feedme
 python yelp.py --location="Durham, NC" > ../feeder/yelp_data_durham.json
+python yelp.py --location="Durham, NC" --term="breakfast" > ../feeder/yelp_data_durham_breakfast.json
+python yelp.py --location="Durham, NC" --term="lunch" > ../feeder/yelp_data_durham_lunch.json
 python yelp.py --location="Chapel Hill, NC" > ../feeder/yelp_data_ch.json
+python yelp.py --location="Chapel Hill, NC" --term="breakfast" > ../feeder/yelp_data_ch_breakfast.json
+python yelp.py --location="Chapel Hill, NC" --term="lunch" > ../feeder/yelp_data_ch_lunch.json
 python yelp.py --location="Washington, DC" > ../feeder/yelp_data_dc.json
+python yelp.py --location="Washington, DC" --term="breakfast" > ../feeder/yelp_data_dc_breakfast.json
+python yelp.py --location="Washington, DC" --term="lunch" > ../feeder/yelp_data_dc_lunch.json
 python yelp.py --location="New York, NY" > ../feeder/yelp_data_nyc.json
+python yelp.py --location="New York, NY" --term="breakfast" > ../feeder/yelp_data_nyc_breakfast.json
+python yelp.py --location="New York, NY" --term="lunch" > ../feeder/yelp_data_nyc_lunch.json
 cd ..
 python manage.py shell
 ```
