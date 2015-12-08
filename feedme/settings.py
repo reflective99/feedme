@@ -78,7 +78,8 @@ WSGI_APPLICATION = 'feedme.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-# THIS IS FOR LOCAL USE.
+######### THIS IS FOR LOCAL USE ######################
+###### FOR LOCAL DEPLOYMENT UNCOMMENT THE FOLLOWING CODE #####
 
 """
 DATABASES = {
@@ -88,7 +89,10 @@ DATABASES = {
     }
 }
 """
+
 ####################### ENABLE FOR PRODUCTION ##############
+###### FOR REMOTE DEPLOYMENT UNCOMMENT THE FOLLOWING CODE #####
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
