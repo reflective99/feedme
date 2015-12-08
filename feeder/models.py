@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Restaurant(models.Model):
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
-    city = models.CharField(max_length=15)
+    city = models.CharField(max_length=20)
     zip_code = models.IntegerField()
     rating = models.FloatField()
     

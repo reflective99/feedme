@@ -59,12 +59,12 @@ for f in files:
     data = json.load(data_file)
     for rst in data:
       count += 1
-      print rst["name"]
-      print rst["rating"]
+      print "Name: " + rst["name"]
+      print "City : " +rst["city"]
       if Restaurant.objects.filter(name = rst["name"]).exists() == False:  
         print "This restaurant is not in the database. Adding to db..."
         r = Restaurant(name=rst["name"], address=rst["address"], city=rst["city"], zip_code=rst["zip"], rating=rst["rating"])
-        r.save()
+        #r.save()
       else:
         print "Restaurant already exists in database"
         r = Restaurant.objects.get(name = rst["name"])
@@ -74,5 +74,5 @@ for f in files:
           cgy = Category(rid=r.id, cat=c)
           print cgy.rid
           print cgy.cat
-          cgy.save()
+         # cgy.save()
 print count
