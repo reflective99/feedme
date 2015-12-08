@@ -8,6 +8,7 @@ from .models import Restaurant
 from .models import Like
 from .models import Category
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 import random
 
@@ -34,19 +35,19 @@ def result(request):
     category_param = request.POST.get('categories')
     print c
     print category_param
-    
+
     #get restaurants in specified location
     if c != "I don't care":
       restaurants_with_location = Restaurant.objects.filter(city=c)
     else:
       restaurants_with_location = Restaurant.objects.all()
-      
+
     #get all restaurants with the requested category
     if category_param != "Doesn't matter":
       #gives list of rids that are restaurants with appropriate category
       restaurants_with_category = Category.objects.filter(cat=category_param).values('rid')
 
-    
+
     #need to find all restaurants that are in restaurants_with_location and in restaurants_with_category
       res = []
       for res1 in restaurants_with_location:
@@ -57,24 +58,24 @@ def result(request):
     else:
       #if no category specified, just use the ones with correct location
       res = restaurants_with_location
-    
+
     count = len(res)
     if(count > 0):
         #randomly select a restaurant
         restaurant = res[random.randint(0, count-1)]
-        add = restaurant.address + " " + restaurant.city 
+        add = restaurant.address + " " + restaurant.city
         add.replace(" ", "+")
         restaurant_categories = Category.objects.filter(rid=restaurant.id)
-        
+
         #check if the restaurant has been liked by this user
         user = request.user
         res_liked = Like.objects.filter(uid=user.id, rid=restaurant.id).exists()
-        
+
         context = {'restaurant': restaurant, 'count': count, 'cats': restaurant_categories, 'addr': add, 'res_liked': res_liked}
         return render(request, 'result.html', context)
     else:
         return render(request, 'failed.html')
-    
+
 def profile(request):
     #user = User.objects.all()[2]
     #context = {'user': user}
@@ -87,17 +88,19 @@ def profile(request):
     context = {'u': user, 'res_names': rnames}
     return render(request, 'profile.html', context)
 
-def add_like(request, uid, rid):
-    l = Like(uid=uid, rid=rid)
+@login_required
+def add_like(request, rid):
+    user = request.user
+    l = Like(uid=user.id, rid=rid)
     l.save()
     return HttpResponseRedirect('/profile')
-    
+
 def about(request):
     return render(request, 'about.html')
-    
+
 def contact(request):
     return render(request, 'contact.html')
-    
+
 def register(request):
     # Like before, get the request's context.
     context = RequestContext(request)
@@ -122,7 +125,7 @@ def register(request):
             user.set_password(user.password)
             user.save()
 
-         
+
 
             # Update our variable to tell the template registration was successful.
             registered = True
@@ -143,7 +146,7 @@ def register(request):
             'register.html',
             {'user_form': user_form, 'registered': registered},
             context)
-            
+
 def user_login(request):
     # Like before, obtain the context for the user's request.
     context = RequestContext(request)
@@ -183,7 +186,7 @@ def user_login(request):
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
         return render_to_response('login.html', {}, context)
-        
+
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 
