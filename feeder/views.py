@@ -22,7 +22,7 @@ def index(request):
     for c in cats:
         categories.append(c['cat'])
     categories = sorted(set(categories))
-    
+    print categories
     #categories = sorted(set(categories))
     # categories = Category.objects.order_by('cat').values('cat').distinct()
     allusers = User.objects.all()
