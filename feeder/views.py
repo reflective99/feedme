@@ -71,7 +71,7 @@ def result(request):
         user = request.user
         res_liked = Like.objects.filter(uid=user.id, rid=restaurant.id).exists()
 
-        context = {'restaurant': restaurant, 'count': count, 'cats': restaurant_categories, 'addr': add, 'res_liked': res_liked}
+        context = {'user': user, 'restaurant': restaurant, 'count': count, 'cats': restaurant_categories, 'addr': add, 'res_liked': res_liked}
         return render(request, 'result.html', context)
     else:
         return render(request, 'failed.html')

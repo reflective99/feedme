@@ -21,11 +21,13 @@
 
 		<br>
 
-      {% if res_liked == False %}
+		{% if user.is_authenticated %}
+			{% if res_liked == False %}
         <a href="/add_like/{{restaurant.id}}">
           I like this restaurant!
         </a>
       {% endif %}
+		{% endif %}
 
 
 
