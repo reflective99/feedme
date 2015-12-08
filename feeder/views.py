@@ -39,8 +39,10 @@ def result(request):
     #get restaurants in specified location
     if c != "I don't care":
       restaurants_with_location = Restaurant.objects.filter(city=c)
+      loc = c+"-area"
     else:
       restaurants_with_location = Restaurant.objects.all()
+      loc = "US"
 
     #get all restaurants with the requested category
     if category_param != "Doesn't matter":
@@ -71,7 +73,7 @@ def result(request):
         user = request.user
         res_liked = Like.objects.filter(uid=user.id, rid=restaurant.id).exists()
 
-        context = {'user': user, 'restaurant': restaurant, 'count': count, 'cats': restaurant_categories, 'addr': add, 'res_liked': res_liked}
+        context = {'loc': loc, 'user': user, 'restaurant': restaurant, 'count': count, 'cats': restaurant_categories, 'addr': add, 'res_liked': res_liked}
         return render(request, 'result.html', context)
     else:
         return render(request, 'failed.html')
