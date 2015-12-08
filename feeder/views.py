@@ -16,7 +16,7 @@ def index(request):
     cities = []
     for c in city_hash:
         cities.append(c['city'])
-    cities = set(cities)
+    cities = sorted(set(cities))
     cats = Category.objects.values('cat').distinct()
     categories = []
     for c in cats:
