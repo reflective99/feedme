@@ -7,11 +7,6 @@
 
                 <h4>Login to Feed Me</h4>
 
-                {% if invalid %}
-                {% csrf_token %}
-
-                  <h5>Your login details were invalid. Please try again</h5>
-                {% endif %}
 
         <form id="login_form" method="post" action="/login">
             {% csrf_token %}
