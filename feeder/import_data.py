@@ -65,6 +65,7 @@ for f in files:
         print "This restaurant is not in the database. Adding to db..."
         r = Restaurant(name=rst["name"], address=rst["address"], city=rst["city"], zip_code=rst["zip"], rating=rst["rating"])
         r.save()
+        print "SAVEEEEEEEEEEED!"
       else:
         print "Restaurant already exists in database"
         r = Restaurant.objects.get(name = rst["name"])
